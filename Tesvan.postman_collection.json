@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "a5cbb0c5-82d2-4cb9-985f-cf2bda57badc",
+		"name": "postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31966261"
+	},
+	"item": [
+		{
+			"name": "submit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Capture and store id from response\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const id = responseJson.vnJwS; \r",
+							"    pm.environment.set(\"id\", name);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "uGdhv6nJmNKwJgdGCqMTjmNyNUtoXizEcDG9apEx8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\":\"test\",\"sections\":[{\"name\":\"{{user}}\",\"syntax\":\"autodetect\",\"contents\":\"Testing!\"}]}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.paste.ee/v1/pastes?name=true&syntax=true&contents=false&encrypted=true&description=true&sections=false",
+					"protocol": "https",
+					"host": [
+						"api",
+						"paste",
+						"ee"
+					],
+					"path": [
+						"v1",
+						"pastes"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "true",
+							"description": "Default: New Paste 1-10"
+						},
+						{
+							"key": "syntax",
+							"value": "true",
+							"description": "Default: autodetect"
+						},
+						{
+							"key": "contents",
+							"value": "false",
+							"description": "Section contents"
+						},
+						{
+							"key": "encrypted",
+							"value": "true",
+							"description": "Whether the paste should be treated as encrypted. Default: false"
+						},
+						{
+							"key": "description",
+							"value": "true",
+							"description": "Overall paste description."
+						},
+						{
+							"key": "sections",
+							"value": "false",
+							"description": "Array of sections."
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomText = Math.random().toString(36).substring(7);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "uGdhv6nJmNKwJgdGCqMTjmNyNUtoXizEcDG9apEx8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.paste.ee/v1/pastes?name=true&syntax=true&contents=false&encrypted=true&description=true&sections=false&id=vnJwS",
+					"protocol": "https",
+					"host": [
+						"api",
+						"paste",
+						"ee"
+					],
+					"path": [
+						"v1",
+						"pastes"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "true"
+						},
+						{
+							"key": "syntax",
+							"value": "true"
+						},
+						{
+							"key": "contents",
+							"value": "false"
+						},
+						{
+							"key": "encrypted",
+							"value": "true"
+						},
+						{
+							"key": "description",
+							"value": "true"
+						},
+						{
+							"key": "sections",
+							"value": "false"
+						},
+						{
+							"key": "id",
+							"value": "vnJwS"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "uGdhv6nJmNKwJgdGCqMTjmNyNUtoXizEcDG9apEx8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.paste.ee/v1/pastes/Gdoo4",
+					"protocol": "https",
+					"host": [
+						"api",
+						"paste",
+						"ee"
+					],
+					"path": [
+						"v1",
+						"pastes",
+						"Gdoo4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "pm.variables.set('randomContents', randomText);",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
